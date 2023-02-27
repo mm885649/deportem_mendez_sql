@@ -1,0 +1,68 @@
+/*VISTAS*/
+
+CREATE OR REPLACE VIEW clientes AS
+    (SELECT DISTINCT
+        nombre, fecha
+    FROM
+        cliente v
+            JOIN
+        facturacion p ON (v.nombre = p.ID_pedido)
+    WHERE
+        p.ID_cliente > 1);
+SELECT 
+    *
+FROM
+    clientes;
+
+CREATE VIEW facturas AS
+    SELECT 
+        *
+    FROM
+        facturacion;
+SELECT 
+    *
+FROM
+    facturas;
+
+SELECT 
+    *
+FROM
+    facturacion;
+
+
+CREATE OR REPLACE VIEW venta AS
+    (SELECT 
+        nombre, ID_ticket, precio_total
+    FROM
+        ventas
+    WHERE
+        nombre LIKE UPPER('%Edouard%'));
+SELECT 
+    *
+FROM
+    venta;
+
+CREATE VIEW vista_almacen AS
+    SELECT 
+        *
+    FROM
+        almacen;
+SELECT 
+    *
+FROM
+    vista_almacen;
+
+SELECT 
+    *
+FROM
+    almacen;
+
+CREATE OR REPLACE VIEW producto AS
+    (SELECT 
+        ID_productos
+    FROM
+        productos);
+SELECT 
+    *
+FROM
+    producto;
