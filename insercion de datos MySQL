@@ -1,0 +1,173 @@
+ /*INSERCION DE DATOS*/ 
+  
+ drop table almacen; 
+ create table almacen
+(
+    ID_pedido int not null auto_increment primary key,
+	merc_lista bool,
+	act_inventario bool
+);
+
+insert into almacen (ID_pedido,merc_lista,act_inventario)
+values
+(null,false,true),
+(null,true,false),
+(null,false,false),
+(null,true,true),
+(null,true,true),
+(null,false,true),
+(null,true,false),
+(null,true,false),
+(null,true,true),
+(null,true,true),
+(null,false,true),
+(null,true,true),
+(null,true,false),
+(null,true,false),
+(null,false,false);
+ 
+ select * from almacen
+ drop table test1,test2,test3,test4;
+ 
+  drop table cliente;
+  
+  create table cliente
+(
+    ID_cliente int not null auto_increment primary key,
+	nombre varchar(30),
+	apellido varchar(30),
+	edad int(2),
+	sexo varchar(10),
+	domicilio varchar(60),
+	tel_mov numeric(12),
+	tel_fijo numeric(12),
+	email varchar(30),
+	fecha date
+);
+ 
+  select * from cliente;
+  
+insert into cliente (ID_cliente,nombre,apellido,edad,sexo,domicilio,tel_mov,tel_fijo,email,fecha)
+values
+(null,'Chandler','Broodes',15,'M','46 Miller Terrace',7895130646,6546480987,'cbroodes0@webeden.co.uk','2022-11-22');
+
+insert into cliente (ID_cliente,nombre,apellido,edad,sexo,domicilio,tel_mov,tel_fijo,email,fecha)
+values  
+(null,'Theresina','Slator',31,'F ','PO Box 36175',9802434742,4936066900,'tslator0@walmart.com','2022-07-02'),
+(null,'Edouard','Davsley',33,'M ','Suite 22',6576290960,7892448060,'edavsley1@mac.com','2023-02-16'),
+(null,'Lonnard','Milberry',23,'M ','8th Floor',3185234046,6641180630,'lmilberry2@livejournal.com','2022-03-09'),
+(null,'Jae','Fair',45,' M','2nd Floor',9788901228,4848445511,'jfair3@wix.com','2023-01-26'),
+(null,'Rozele','Benditt',35,'F','7th Floor',8847633511,3023289649,'rbenditt4@noaa.gov','2022-03-08'),
+(null,'Mozes','Argabrite',66,'M','Suite 70',1018698970,6178279018,'margabrite5@youtu.be','2022-12-09'),
+(null,'Saunders','McKiddin',47,'M','5th Floor',1419386425,8063497298,'smckiddin6@shutterfly.com','2022-08-26'),
+(null,'Kermie','Itzakovitz',38,'F','Room 537',5542263209,7396858920,'kitzakovitz7@tinypic.com','2022-05-10'),
+(null,'Dorthy','Athersmith',19,'F','Suite 63',8255509690,8091714266,'dathersmith8@uiuc.edu','2023-02-08'),
+(null,'Langston','Stanbury',20,'M','Room 219',7455606969,2514437520,'lstanbury9@mysql.com','2022-12-01'),
+(null,'Konrad','Rosenkrantz',15,'M','Apt 261',7741010422,1502717352,'krosenkrantza@ucoz.ru','2022-03-02'),
+(null,'Clywd','Rault',12,'M','Suite 61',3556023827,5034825181,'craultb@accuweather.com','2022-03-23'),
+(null,'Kelsey','Helwig',13,'F','Room 1822',5999998371,7232735341,'khelwigc@answers.com','2023-01-31'),
+(null,'Aguistin','Eyrl',14,'M','12th Floor',1495072668,5966135841,'aeyrld@sogou.com','2022-07-18');  
+  
+  
+  
+  select * from cliente;
+  select * from almacen;
+  
+ drop table facturacion;   
+
+create table facturacion(
+ID_pedido int not null auto_increment primary key,
+ID_cliente int not null, 
+ID_productos int not null,
+cant_productos int not null,
+precio_total float not null,
+tipo_de_pago varchar(10),
+ID_ticket_cobro int not null);
+
+ select * from facturacion;
+ 
+ insert into facturacion (ID_pedido,ID_cliente,ID_productos,cant_productos,precio_total,tipo_de_pago,ID_ticket_cobro)
+values  
+ (null,1,1,1,387.66,'mastercard',1),
+(null,2,2,2,545.25,'efectivo',2),
+(null,3,3,3,498.54,'visa',3),
+(null,4,4,5,434.26,'mastercard',4),
+(null,5,5,5,536.23,'visa',5),
+(null,6,6,2,604.12,'efectivo',6),
+(null,7,7,1,463.01,'visa',7),
+(null,8,8,3,413.67,'mastercard',8),
+(null,9,9,3,467.28,'efectivo',9),
+(null,10,10,6,374.25,'mastercard',10),
+(null,11,11,3,499.91,'visa',11),
+(null,12,12,1,536.4,'efectivo',12),
+(null,13,13,2,398.32,'efectivo',13),
+(null,14,14,4,637.76,'visa',14),
+(null,15,15,9,491.75,'mastercard',15);
+
+  select * from facturacion;
+
+ drop table productos; 
+create table productos(
+ID_productos int not null auto_increment primary key,
+Prod_adquirido varchar(30) not null);
+
+insert into productos (ID_productos,Prod_adquirido)
+values
+(null,'playera_caballero_CH'),
+(null,'playera_dama_G'),
+(null,'pants_niño_G'),
+(null,'pants_dama_CH'),
+(null,'talla_#23_tenis_dama'),
+(null,'talla_#24_tenis_dama'),
+(null,'pants_niño_CH'),
+(null,'pants_dama_G'),
+(null,'talla_#19_tenis_niño'),
+(null,'pants_caballero_CH'),
+(null,'pants_dama_G'),
+(null,'talla_#17_tenis_niño'),
+(null,'pants_caballero_G'),
+(null,'talla_#26_tenis_caballero'),
+(null,'pants_dama_M');
+
+  select * from productos;
+
+ drop table ventas; 
+ 
+ 
+   create table ventas
+(
+    ID_ticket int not null auto_increment primary key,
+    ID_cliente int,
+	nombre varchar(30),
+	apellido varchar(30),
+	tel_mov numeric(12),
+	tel_fijo numeric(12),
+	email varchar(30),
+	fecha date,
+    rfc varchar(20),
+    ID_pedido int,
+	ID_productos int not null,
+	cant_productos int not null,
+	precio_total float not null,
+	tipo_de_pago varchar(10)
+    );
+    
+insert into ventas (ID_ticket,  ID_cliente,nombre,apellido, tel_mov,tel_fijo,email,fecha,rfc,ID_pedido,ID_productos,cant_productos,precio_total,tipo_de_pago)
+values
+(NULL,1,'Chandler','Broodes',7895130646,6546480987,'cbroodes0@webeden.co.uk','2022-11-22','MONM9108285Q2',1,1,1,387.66,'mastercard'),
+(NULL,2,'Theresina','Slator',9802434742,4936066900,'tslator0@walmart.com','2022-07-02','MALL751106QS7',2,2,2,545.25,'efectivo'),
+(NULL,3,'Edouard','Davsley',6576290960,7892448060,'edavsley1@mac.com','2023-02-16','RESM460807I29',3,3,3,498.54,'visa'),
+(NULL,4,'Lonnard','Milberry',3185234046,6641180630,'lmilberry2@livejournal.com','2022-03-09','GUDM450305B93',4,4,5,434.26,'mastercard'),
+(NULL,5,'Jae','Fair',9788901228,4848445511,'jfair3@wix.com','2023-01-26','MOVS921129CI7',5,5,5,536.23,'visa'),
+(NULL,6,'Rozele','Benditt',8847633511,3023289649,'rbenditt4@noaa.gov','2022-03-08','MATM790903N49',6,6,2,604.12,'efectivo'),
+(NULL,7,'Mozes','Argabrite',1018698970,6178279018,'margabrite5@youtu.be','2022-12-09','AABE850416IU0',7,7,1,463.01,'visa'),
+(NULL,8,'Saunders','McKiddin',1419386425,8063497298,'smckiddin6@shutterfly.com','2022-08-26','CELF560323B33',8,8,3,413.67,'mastercard'),
+(NULL,9,'Kermie','Itzakovitz',5542263209,7396858920,'kitzakovitz7@tinypic.com','2022-05-10','REDJ630420H30',9,9,3,467.28,'efectivo'),
+(NULL,10,'Dorthy','Athersmith',8255509690,8091714266,'dathersmith8@uiuc.edu','2023-02-08','JIML951222EZ1',10,10,6,374.25,'mastercard'),
+(NULL,11,'Langston','Stanbury',7455606969,2514437520,'lstanbury9@mysql.com','2022-12-01','VILM950512B90',11,11,3,499.91,'visa'),
+(NULL,12,'Konrad','Rosenkrantz',7741010422,1502717352,'krosenkrantza@ucoz.ru','2022-03-02','VIVJ960118EJ4',12,12,1,536.4,'efectivo'),
+(NULL,13,'Clywd','Rault',3556023827,5034825181,'craultb@accuweather.com','2022-03-23','MOMI840311QL3',13,13,2,398.32,'efectivo'),
+(NULL,14,'Kelsey','Helwig',5999998371,7232735341,'khelwigc@answers.com','2023-01-31','BAAZ640128QB9',14,14,4,637.76,'visa'),
+(NULL,15,'Aguistin','Eyrl',1495072668,5966135841,'aeyrld@sogou.com','2022-07-18','HEHR9408091K4',15,15,9,491.75,'mastercard');
+
+  select * from ventas;
